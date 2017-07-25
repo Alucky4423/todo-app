@@ -21,28 +21,33 @@ class TodoApp extends React.Component {
     if (!todo) return
 
     const updatedTodoList = this.state.todoList.concat([ new Todo(todo) ])
-    // 永続化
-    localStorage.setItem(TodoApp.SERIALIZE_KEY, JSON.stringify(updatedTodoList))
-    this.setState({ todoList: updatedTodoList })
+    this.updateState(updatedTodoList)
   }
 
   toggleTodo(id) {
-    // const toggledTodos = this.state.todos
-    //   .concat()
-    //   .reduce((arr, todo, currentIndex) => {
-    //     const addingTodo = (currentIndex === idx)
-    //         ? todo.toggle() : todo;
-    //     return arr.concat([ addingTodo ]);
-    //   }, []);
+    const updatedTodoList = this.state.todoList
+      .concat()
+      .map(todo => {
+        if (todo.id === id) return Todo.toggle(todo)
+        else return todo
+      })
 
-    // toggledTodos.forEach(todo => console.log(todo));
-    // this.setState({ todos: toggledTodos })
+    this.updateState(updatedTodoList)
   }
 
   removeTodo(id) {
-    // let copied = this.state.todos.concat();
-    // copied.splice(idx, 1);
-    // this.setState({ todos: copied });
+    const updatedTodoList = this.state.todoList
+      .concat()
+      .filter(todo => { return todo.id !== id })
+
+    this.updateState(updatedTodoList)
+  }
+
+  updateState(todoList) {
+    // 永続化
+    localStorage.setItem(TodoApp.SERIALIZE_KEY, JSON.stringify(todoList))
+    // 状態更新
+    this.setState({ todoList: todoList })
   }
 
   render() {
