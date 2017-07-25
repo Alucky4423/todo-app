@@ -1,17 +1,7 @@
 import React from 'react';
 import TodoForm from './TodoForm';
 import TodoList from './TodoList';
-
-class Todo {
-  constructor(content, isCompleted = false) {
-    this.content = content
-    this.isCompleted = isCompleted
-  }
-
-  toggle() {
-    return new Todo(this.content, !this.isCompleted)
-  }
-}
+import Todo from './Todo.js';
 
 class TodoApp extends React.Component {
   constructor() {
