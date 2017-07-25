@@ -20,11 +20,10 @@ class TodoApp extends React.Component {
     console.log("TodoApp#addTodo : " + todo)
     if (!todo) return
 
-    this.setState({
-      todoList: this.state.todoList.concat([ new Todo(todo) ]),
-    })
-
-    localStorage.setItem(TodoApp.SERIALIZE_KEY, JSON.stringify(this.state.todoList))
+    const updatedTodoList = this.state.todoList.concat([ new Todo(todo) ])
+    // 永続化
+    localStorage.setItem(TodoApp.SERIALIZE_KEY, JSON.stringify(updatedTodoList))
+    this.setState({ todoList: updatedTodoList })
   }
 
   toggleTodo(id) {
