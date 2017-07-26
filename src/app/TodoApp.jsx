@@ -1,9 +1,10 @@
+import 'normalize.css/normalize.css'
 import React from 'react';
 import TodoForm from './TodoForm';
 import TodoList from './TodoList';
 import Todo from './Todo.js';
 
-class TodoApp extends React.Component {
+export default class TodoApp extends React.Component {
 
   static get SERIALIZE_KEY() {
     return 'todoList'
@@ -53,7 +54,9 @@ class TodoApp extends React.Component {
   render() {
     return (
       <div id="Todo">
-        <h1>TodoApp</h1>
+        <div id="titleBar">
+          <h1>TodoApp</h1>
+        </div>
         <TodoForm onClick={this.addTodo.bind(this)} />
         <TodoList todoList={this.state.todoList}
           onChange={this.toggleTodo.bind(this)}
@@ -62,5 +65,3 @@ class TodoApp extends React.Component {
     );
   }
 }
-
-export default TodoApp;
