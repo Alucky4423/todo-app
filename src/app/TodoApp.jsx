@@ -59,8 +59,6 @@ export default class TodoApp extends React.Component {
         color: 'white',
         backgroundColor: '#3D5AFE',
       },
-      form:{},
-      list:{},
     }
   }
 
