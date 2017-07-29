@@ -1,8 +1,8 @@
 import 'normalize.css/normalize.css'
-import React from 'react';
-import TodoForm from './TodoForm';
-import TodoList from './TodoList';
-import Todo from './Todo.js';
+import React from 'react'
+import TodoForm from './TodoForm'
+import TodoList from './TodoList'
+import Todo from './Todo.js'
 
 export default class TodoApp extends React.Component {
 
