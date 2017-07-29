@@ -51,12 +51,24 @@ export default class TodoApp extends React.Component {
     this.setState({ todoList: todoList })
   }
 
+  getStyles() {
+    return {
+      title: {
+        margin: '0',
+        padding: '20px 0 20px 20px',
+        color: 'white',
+        backgroundColor: '#3D5AFE',
+      },
+      form:{},
+      list:{},
+    }
+  }
+
   render() {
+    const styles = this.getStyles()
     return (
       <div id="Todo">
-        <div id="titleBar">
-          <h1>TodoApp</h1>
-        </div>
+        <h1 style={styles.title}>TodoApp</h1>
         <TodoForm onClick={this.addTodo.bind(this)} />
         <TodoList todoList={this.state.todoList}
           onChange={this.toggleTodo.bind(this)}
