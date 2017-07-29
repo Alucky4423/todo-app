@@ -1,7 +1,7 @@
 import React from 'react';
 import TodoItem from './TodoItem';
 
-class TodoList extends React.Component {
+export default class TodoList extends React.Component {
   render() {
     return (
       <ul id="todoList">
@@ -12,5 +12,3 @@ class TodoList extends React.Component {
     )
   }
 }
-
-export default TodoList;
