@@ -1,4 +1,5 @@
 import React from 'react'
+import styles from './TodoItem.css.js'
 
 export default class TodoItem extends React.Component {
   constructor(props) {
@@ -12,28 +13,21 @@ export default class TodoItem extends React.Component {
   }
 
   render() {
-    // const style = {
-    //   checked: (this.state.checked) ? {
-    //     textDecoration: "line-through",
-    //   } : {},
-    //   delBtn: {
-    //     color: 'white',
-    //     backgroundColor: 'red',
-    //   }
-    // };
-
     const todo = this.props.todo
-
     return (
-      <li id={todo.id}>
-        <label>
+      <tr style={styles.base}>
+        <td>
           <input type="checkbox"
             checked={this.state.checked}
             onChange={this.handleChange.bind(this)} />
-            {todo.content}
-        </label>
-        <button type="button" onClick={() => this.props.onClick(todo.id)}>Del</button>
-      </li>
+        </td>
+        <td style={this.state.checked ? styles.content.complete : {}}>{todo.content}</td>
+        <td>
+          <button type="button"
+            style={styles.deleteBtn}
+            onClick={() => this.props.onClick(todo.id)}>Del</button>
+        </td>
+      </tr>
     )
   }
 }
