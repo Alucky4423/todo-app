@@ -1,4 +1,5 @@
 import React from 'react'
+import styles from './TodoForm.css'
 
 export default class TodoForm extends React.Component {
   constructor(props) {
@@ -15,34 +16,7 @@ export default class TodoForm extends React.Component {
     this.setState({ value: '' })
   }
 
-  getStyles() {
-    return {
-      form: {
-        padding: '20px 0',
-        textAlign: 'center',
-      },
-      field: {
-        marginRight: 10,
-        height: 30,
-        borderStyle: 'solid',
-        borderColor: '#aaa',
-        borderRadius: 10,
-      },
-      button: {
-        width: 60,
-        height: 35,
-        padding: '3px 0 3px 0',
-        borderStyle: 'none',
-        borderRadius: '10px',
-        backgroundColor: '#009688',
-        color: 'white',
-      },
-    }
-  }
-
   render() {
-    const styles = this.getStyles()
-
     return (
       <form id="todoForm" style={styles.form}>
         <input type="text"
