@@ -8,7 +8,14 @@ export default class TodoItem extends React.Component {
   }
 
   handleChange(event) {
+    console.log(event.target.checked)
     this.setState({ checked: event.target.checked })
+    this.props.onChange(this.props.todo.id)
+  }
+
+  handleChangeOfContent(event) {
+    const target = event.target.parentNode.querySelector('input[type=checkbox]')
+    this.setState({ checked: !target.checked })
     this.props.onChange(this.props.todo.id)
   }
 
@@ -24,9 +31,9 @@ export default class TodoItem extends React.Component {
             onChange={this.handleChange.bind(this)} />
         </td>
         <td style={this.state.checked 
-          ? Object.assign({}, styles.content.complete, styles.td.content, styles.td.base)
-          : Object.assign({}, styles.td.content, styles.td.base)}
-          onClick={(e) => console.log(e.target.parentNode.querySelector('input[type=checkbox]').checked)}>
+              ? Object.assign({}, styles.content.complete, styles.td.content, styles.td.base)
+              : Object.assign({}, styles.td.content, styles.td.base)}
+          onClick={this.handleChangeOfContent.bind(this)}>
           {todo.content}
         </td>
         <td style={Object.assign({},
